@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sony Jewellers | Since 1958</title>
+    <style>
+        /* --- GLOBAL STYLES & LUXURY THEME --- */
+        :root {
+            --primary-gold: #D4AF37;
+            --light-gold: #F3E5AB;
+            --dark-gold: #997A00;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif, Arial;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: var(--text-dark);
+            display: flex;
+            overflow-x: hidden;
+        }
+
+        /* --- SIDEBAR NAVIGATION --- */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: var(--white);
+            position: fixed;
+            left: 0;
+            top: 0;
+            box-shadow: 2px 0 15px rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            z-index: 100;
+        }
+
+        .sidebar h2 {
+            color: var(--primary-gold);
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .sidebar p {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            margin: 15px 0;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary-gold);
+            transform: scale(1.1);
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 50px;
+        }
+
+        /* --- 3D HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            perspective: 1000px;
+        }
+
+        /* --- UPDATABLE LOGO CONTAINER --- */
+        .logo-container {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 30px;
+            animation: float3D 4s ease-in-out infinite;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--primary-gold);
+            text-shadow: 2px 2px 10px rgba(212, 175, 55, 0.3);
+            animation: float3D 4s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        @keyframes float3D {
+            0%, 100% { transform: translateZ(0px) rotateX(0deg); }
+            50% { transform: translateZ(50px) rotateX(5deg); }
+        }
+
+        /* --- HERITAGE SECTION (Ancestors) --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin: 80px 0 40px;
+            border-bottom: 2px solid var(--primary-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .heritage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            perspective: 1000px;
+        }
+
+        .heritage-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid var(--light-gold);
+            transform: translateY(50px) rotateY(-10deg);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .heritage-card.visible {
+            transform: translateY(0) rotateY(0);
+            opacity: 1;
+        }
+
+        .heritage-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-gold);
+            filter: blur(5px);
+            transition: filter 0.4s ease;
+        }
+
+        .heritage-card:hover img {
+            filter: blur(0px);
+        }
+
+        .heritage-card h3 { color: var(--primary-gold); margin-bottom: 10px; }
+        .heritage-card p { color: #666; font-size: 14px; line-height: 1.6; }
+
+        /* --- JEWELLERY COLLECTION (4x4) --- */
+        .collection-category {
+            margin-bottom: 60px;
+        }
+
+        .collection-category h3 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .jewellery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .jewellery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .jewellery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .jewellery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 25px;
+            transition: transform 0.8s ease;
+        }
+
+        .jewellery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        footer {
+            background: var(--white);
+            padding: 40px;
+            text-align: center;
+            border-top: 2px solid var(--light-gold);
+            margin-top: 80px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        footer h2 { color: var(--primary-gold); margin-bottom: 15px; }
+        footer p { font-size: 18px; color: #555; margin: 5px 0; }
+        footer .whatsapp {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--primary-gold);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        footer .whatsapp:hover { background: var(--dark-gold); }
+
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+        <h2>SONY JEWELLERS</h2>
+        <p>Hussain Ali Sony & Sons</p>
+        <a href="#home">Home</a>
+        <a href="#heritage">Our Heritage</a>
+        <a href="#collection">21k Collection</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- HERO SECTION -->
+        <section id="home" class="hero">
+            <!-- LOGO IMAGE: Update the path below to your logo file -->
+            <div class="logo-container">
+                <img src="C:\Users\farhan\Desktop\bridal\sj.jpeg" alt="Sony Jewellers Logo" class="logo-image">
+            </div>
+            
+            <h1>Exquisite 21 Karat Elegance</h1>
+            <p>Crafting Timeless Masterpieces in Sarafa Bazar Since 1958</p>
+        </section>
+
+        <!-- HERITAGE SECTION -->
+        <h2 class="section-title" id="heritage">A Legacy of Trust</h2>
+        <section class="heritage-grid">
+            <div class="heritage-card scroll-3d">
+                <img src="mera pas abhi filhal pic nahi hai" alt="Karam Ali">
+                <h3>Karam Ali</h3>
+                <p>The visionary founder who planted the seed of our legacy in 1958. His unparalleled craftsmanship and unwavering honesty turned a small workshop into a trusted name across generations.</p>
+            </div>
+            <div class="heritage-card scroll-3d">
+                <img src="C:\Users\farhan\Desktop\bridal\liaqat.jpeg" alt="Liaqat Ali">
+                <h3>Liaqat Ali</h3>
+                <p>A pillar of strength and dedication. Through changing times, he worked tirelessly, battling hardships to not only sustain but magnify our heritage, ensuring our golden standards never faded.</p>
+            </div>
+            <div class="heritage-card scroll-3d">
+                <img src="C:\Users\farhan\Desktop\bridal\hussain.jpeg" alt="Hussain Ali Sony">
+                <h3>Hussain Ali Sony</h3>
+                <p>The modern torchbearer. Blending ancestral wisdom with contemporary elegance, Hussain continues to elevate Sony Jewellers, bringing innovative 3D designs while keeping traditions alive.</p>
+            </div>
+        </section>
+
+        <!-- COLLECTION SECTION -->
+        <h2 class="section-title" id="collection">21 Karat Masterpieces</h2>
+        
+        <div class="collection-category">
+            <h3>Bridal Sets</h3>
+            <div class="jewellery-grid">
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bridal.jpg" alt="Bridal 1"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bridal2.jpg" alt="Bridal 2"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bridal3.jpg" alt="Bridal 3"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bridal4.jpg" alt="Bridal 4"></div>
+            </div>
+        </div>
+
+        <div class="collection-category">
+            <h3>Luxury Rings</h3>
+            <div class="jewellery-grid">
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\ring.jfif" alt="Ring 1"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\ring4.jfif" alt="Ring 2"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\ring2.jfif" alt="Ring 3"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\ring3.jfif" alt="Ring 4"></div>
+            </div>
+        </div>
+
+        <div class="collection-category">
+            <h3>Traditional Bangles</h3>
+            <div class="jewellery-grid">
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bangle.jfif" alt="Bangle 1"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bangle4.jfif" alt="Bangle 2"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bangle2.jfif" alt="Bangle 3"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\bangle3.jfif" alt="Bangle 4"></div>
+            </div>
+        </div>
+
+        <div class="collection-category">
+            <h3>Pendant Necklaces</h3>
+            <div class="jewellery-grid">
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\neck.jfif" alt="Necklace 1"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\neck4.jfif" alt="Necklace 2"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\neck2.jfif" alt="Necklace 3"></div>
+                <div class="jewellery-item"><img src="C:\Users\farhan\Desktop\bridal\neck3.jfif" alt="Necklace 4"></div>
+            </div>
+        </div>
+
+        <footer id="contact">
+            <h2>Visit Sony Jewellers</h2>
+            <p><strong>Address:</strong> Sarafa Bazar, Bhalwal</p>
+            <p><strong>Owner:</strong> Hussain Ali Sony & Sons (Since 1958)</p>
+            <a href="https://wa.me/923006062600" class="whatsapp" target="_blank">WhatsApp Us: 0300-6062600</a>
+        </footer>
+    </div>
+
+    <script>
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.scroll-3d').forEach((element) => { observer.observe(element); });
+    </script>
+</body>
+</html>
